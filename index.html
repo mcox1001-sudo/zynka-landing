@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZYNKA â Intelligent Solutions for a Sustainable World</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary-blue: #2196F3;
+  --primary-purple: #7C3AED;
+  --mid-blue: #4A7AF7;
+  --light-blue: #EEF4FF;
+  --light-purple: #F3EEFF;
+  --accent: #00C896;
+  --accent-bg: #EAFAF5;
+  --bg-white: #FFFFFF;
+  --bg-light: #F7F8FC;
+  --bg-section: #FAFBFF;
+  --text-dark: #1A1A2E;
+  --text-body: #374151;
+  --text-secondary: #64748B;
+  --text-muted: #94A3B8;
+  --border-light: #E2E8F0;
+  --border-card: #E8ECF4;
+  --card-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  --card-hover-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  --gradient-brand: linear-gradient(135deg, #2196F3 0%, #7C3AED 100%);
+  --gradient-brand-light: linear-gradient(135deg, rgba(33,150,243,0.08) 0%, rgba(124,58,237,0.08) 100%);
+  --gradient-accent: linear-gradient(135deg, #00C896, #2196F3);
+  --gradient-accent-light: linear-gradient(135deg, rgba(0,200,150,0.08), rgba(33,150,243,0.08));
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior:smooth; scroll-snap-type:y proximity; overflow-x:hidden; }
+
+body {
+  font-family:'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background:var(--bg-white);
+  color:var(--text-body);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+::-webkit-scrollbar { width:6px; }
+::-webkit-scrollbar-track { background:var(--bg-light); }
+::-webkit-scrollbar-thumb { background:var(--primary-blue); border-radius:3px; }
+::-webkit-scrollbar-thumb:hover { background:var(--primary-purple); }
+
+section {
+  min-height:100vh; scroll-snap-align:start; position:relative;
+  display:flex; align-items:center; justify-content:center;
+  padding:80px 5vw;
+}
+
+.section-inner { max-width:1200px; width:100%; margin:0 auto; }
+
+h1 { font-size:clamp(2.2rem,5vw,4rem); font-weight:800; line-height:1.1; letter-spacing:-0.02em; color:var(--text-dark); }
+h2 { font-size:clamp(1.8rem,3.5vw,3rem); font-weight:700; line-height:1.15; letter-spacing:-0.02em; color:var(--text-dark); }
+h3 { font-size:clamp(1.2rem,2vw,1.5rem); font-weight:600; line-height:1.3; color:var(--text-dark); }
+h4 { font-size:1.1rem; font-weight:600; color:var(--text-dark); }
+p { color:var(--text-body); font-size:1.05rem; }
+
+.reveal { opacity:0; transform:translateY(40px); transition:opacity 0.8s ease, transform 0.8s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+.reveal-delay-1 { transition-delay:0.1s; }
+.reveal-delay-2 { transition-delay:0.2s; }
+.reveal-delay-3 { transition-delay:0.3s; }
+.reveal-delay-4 { transition-delay:0.4s; }
+
+.nav-dots {
+  position:fixed; right:24px; top:50%; transform:translateY(-50%);
+  z-index:1000; display:flex; flex-direction:column; gap:12px;
+}
+.nav-dot {
+  width:10px; height:10px; border-radius:50%;
+  background:var(--border-light); border:none; cursor:pointer;
+  transition:all 0.3s; position:relative;
+}
+.nav-dot:hover, .nav-dot.active {
+  background:var(--primary-blue); box-shadow:0 0 12px rgba(33,150,243,0.5);
+  transform:scale(1.3);
+}
+.nav-dot .tooltip {
+  position:absolute; right:24px; top:50%; transform:translateY(-50%);
+  background:var(--bg-white); color:var(--text-dark); padding:4px 12px;
+  border-radius:6px; font-size:0.75rem; white-space:nowrap;
+  opacity:0; pointer-events:none; transition:opacity 0.2s;
+  border:1px solid var(--border-light); box-shadow:var(--card-shadow);
+}
+.nav-dot:hover .tooltip { opacity:1; }
+
+.btn {
+  display:inline-flex; align-items:center; gap:8px;
+  padding:14px 32px; border-radius:12px; font-weight:600;
+  font-size:1rem; text-decoration:none; cursor:pointer;
+  transition:all 0.3s ease; border:none; font-family:inherit;
+}
+.btn-primary {
+  background:var(--gradient-brand); color:#fff;
+  box-shadow:0 4px 20px rgba(33,150,243,0.3);
+}
+.btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 30px rgba(33,150,243,0.45); }
+.btn-secondary {
+  background:transparent; color:var(--text-dark);
+  border:1px solid var(--border-light);
+}
+.btn-secondary:hover {
+  border-color:var(--primary-blue); background:rgba(33,150,243,0.06);
+  transform:translateY(-2px);
+}
+.btn-accent {
+  background:var(--gradient-accent); color:#fff;
+  box-shadow:0 4px 20px rgba(0,200,150,0.3);
+}
+.btn-accent:hover { transform:translateY(-2px); box-shadow:0 8px 30px rgba(0,200,150,0.45); }
+
+.card {
+  background:var(--bg-white); border:1px solid var(--border-card);
+  border-radius:16px; padding:32px; transition:all 0.4s;
+  position:relative; overflow:hidden; box-shadow:var(--card-shadow);
+}
+.card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background:var(--gradient-brand); opacity:0; transition:opacity 0.4s;
+}
+.card:hover { border-color:rgba(33,150,243,0.3); transform:translateY(-4px); box-shadow:var(--card-hover-shadow); }
+.card:hover::before { opacity:1; }
+
+.card-icon {
+  width:56px; height:56px; border-radius:14px;
+  background:var(--light-blue); display:flex;
+  align-items:center; justify-content:center; margin-bottom:20px; font-size:1.5rem;
+}
+
+.badge {
+  display:inline-block; padding:6px 14px; border-radius:100px;
+  font-size:0.8rem; font-weight:600; letter-spacing:0.05em;
+  background:var(--light-blue); color:var(--primary-blue);
+  border:1px solid rgba(33,150,243,0.15);
+}
+.badge-accent {
+  background:var(--accent-bg); color:var(--accent);
+  border-color:rgba(0,200,150,0.15);
+}
+
+.grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.grid-2 { display:grid; grid-template-columns:repeat(2,1fr); gap:40px; align-items:center; }
+
+.logo-img { height:48px; width:auto; }
+.partner-logo { height:32px; width:auto; max-width:200px; object-fit:contain; }
+
+.mockup-frame {
+  background:var(--bg-white); border:1px solid var(--border-card);
+  border-radius:16px; overflow:hidden; position:relative;
+  box-shadow:var(--card-hover-shadow);
+}
+.mockup-titlebar {
+  display:flex; align-items:center; gap:8px; padding:12px 16px;
+  background:var(--bg-light); border-bottom:1px solid var(--border-light);
+}
+.mockup-dot { width:10px; height:10px; border-radius:50%; }
+.mockup-dot.red { background:#FF5F57; }
+.mockup-dot.yellow { background:#FFBD2E; }
+.mockup-dot.green { background:#28CA41; }
+.mockup-content { padding:24px; min-height:280px; position:relative; }
+.mockup-overlay {
+  position:absolute; inset:0; display:flex; align-items:center;
+  justify-content:center; background:rgba(255,255,255,0.7);
+  font-size:0.85rem; color:var(--text-muted); text-align:center;
+  padding:20px; backdrop-filter:blur(2px); z-index:2;
+  opacity:0; transition:opacity 0.3s;
+}
+.mockup-frame:hover .mockup-overlay { opacity:1; }
+.mockup-stat { background:var(--bg-light); border:1px solid var(--border-light); border-radius:12px; padding:16px; text-align:center; }
+.mockup-stat-value { font-size:1.4rem; font-weight:700; color:var(--text-dark); }
+.mockup-stat-label { font-size:0.75rem; color:var(--text-muted); margin-top:4px; }
+.mockup-stat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:16px; }
+
+.mockup-row {
+  display:flex; align-items:center; gap:12px; padding:10px 12px;
+  border-radius:8px; background:var(--bg-light);
+  border:1px solid var(--border-light); margin-bottom:8px;
+}
+.mockup-row-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+.mockup-row-text { font-size:0.8rem; color:var(--text-secondary); flex:1; }
+.mockup-row-badge { font-size:0.65rem; padding:2px 8px; border-radius:100px; font-weight:600; }
+
+.video-placeholder {
+  background:var(--bg-light); border:1px solid var(--border-card);
+  border-radius:16px; aspect-ratio:16/9; display:flex;
+  align-items:center; justify-content:center; flex-direction:column;
+  gap:16px; cursor:pointer; transition:all 0.3s; position:relative; overflow:hidden;
+}
+.video-placeholder::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse at center, rgba(33,150,243,0.06) 0%, transparent 70%);
+}
+.video-placeholder:hover { border-color:var(--primary-blue); box-shadow:0 8px 30px rgba(33,150,243,0.15); }
+.play-btn {
+  width:72px; height:72px; border-radius:50%; border:2px solid var(--primary-blue);
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(33,150,243,0.1); backdrop-filter:blur(10px);
+  transition:all 0.3s; z-index:1;
+}
+.play-btn::after {
+  content:''; width:0; height:0;
+  border-left:20px solid var(--primary-blue); border-top:12px solid transparent;
+  border-bottom:12px solid transparent; margin-left:4px;
+}
+.video-placeholder:hover .play-btn { background:rgba(33,150,243,0.2); transform:scale(1.08); }
+.video-label { font-size:0.85rem; color:var(--text-muted); z-index:1; }
+
+.comparison-table {
+  width:100%; border-collapse:separate; border-spacing:0;
+  border-radius:16px; overflow:hidden; border:1px solid var(--border-card);
+}
+.comparison-table th, .comparison-table td {
+  padding:16px 24px; text-align:left; border-bottom:1px solid var(--border-light);
+}
+.comparison-table th { background:var(--bg-light); font-weight:600; font-size:0.9rem; color:var(--text-dark); }
+.comparison-table th:last-child { color:var(--primary-blue); }
+.comparison-table td { font-size:0.9rem; color:var(--text-secondary); background:var(--bg-white); }
+.comparison-table tr:last-child td { border-bottom:none; }
+.comparison-table td:first-child { font-weight:500; color:var(--text-dark); }
+.check { color:var(--accent); font-weight:700; }
+.cross { color:#EF4444; }
+.zynka-col { background:rgba(33,150,243,0.03) !important; }
+
+.progress-ring-container { position:relative; width:160px; height:160px; margin:0 auto 16px; }
+.progress-ring { transform:rotate(-90deg); }
+.progress-ring-bg { fill:none; stroke:var(--border-light); stroke-width:8; }
+.progress-ring-fill {
+  fill:none; stroke:url(#ring-gradient); stroke-width:8;
+  stroke-linecap:round; stroke-dasharray:440; stroke-dashoffset:440;
+  transition:stroke-dashoffset 2s ease;
+}
+.progress-ring-text {
+  position:absolute; inset:0; display:flex; align-items:center;
+  justify-content:center; flex-direction:column;
+}
+.progress-ring-value { font-size:2rem; font-weight:800; color:var(--text-dark); }
+.progress-ring-label { font-size:0.75rem; color:var(--text-muted); }
+
+.stat-box { text-align:center; padding:32px; }
+.stat-value { font-size:clamp(2rem,4vw,3.2rem); font-weight:800; margin-bottom:8px; }
+.stat-label { font-size:1rem; color:var(--text-secondary); }
+
+.feature-item {
+  display:flex; gap:16px; padding:16px 0;
+  border-bottom:1px solid var(--border-light);
+}
+.feature-item:last-child { border-bottom:none; }
+.feature-check {
+  width:28px; height:28px; border-radius:8px; flex-shrink:0;
+  background:var(--accent-bg); display:flex;
+  align-items:center; justify-content:center; margin-top:2px;
+}
+.feature-check svg { width:14px; height:14px; }
+
+.workflow { display:flex; flex-direction:column; gap:0; position:relative; }
+.workflow-step { display:flex; align-items:flex-start; gap:20px; padding:20px 0; position:relative; }
+.workflow-num {
+  width:44px; height:44px; border-radius:12px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:700; font-size:0.9rem; position:relative; z-index:2;
+}
+.workflow-line { position:absolute; left:21px; top:64px; bottom:0; width:2px; background:var(--border-light); }
+.workflow-step:last-child .workflow-line { display:none; }
+
+.energy-grid {
+  display:flex; align-items:center; justify-content:center;
+  gap:20px; flex-wrap:wrap; margin:40px 0;
+}
+.energy-node {
+  width:120px; height:120px; border-radius:20px;
+  display:flex; flex-direction:column; align-items:center;
+  justify-content:center; gap:8px; text-align:center;
+  border:1px solid var(--border-card); background:var(--bg-white);
+  transition:all 0.3s; font-size:0.8rem; color:var(--text-secondary);
+  box-shadow:var(--card-shadow);
+}
+.energy-node:hover {
+  border-color:var(--accent); box-shadow:0 8px 30px rgba(0,200,150,0.15);
+  transform:translateY(-4px);
+}
+.energy-node-icon { font-size:2rem; display:flex; align-items:center; justify-content:center; }
+.energy-arrow { font-size:1.5rem; color:var(--primary-blue); animation:pulse-arrow 2s infinite; display:flex; align-items:center; justify-content:center; }
+
+@keyframes pulse-arrow {
+  0%, 100% { opacity:0.4; transform:translateX(0); }
+  50% { opacity:1; transform:translateX(4px); }
+}
+
+.ecosystem-row {
+  display:flex; align-items:stretch; justify-content:center; gap:32px; position:relative;
+}
+.ecosystem-card {
+  flex:1; max-width:340px; background:var(--bg-white);
+  border:1px solid var(--border-card); border-radius:20px;
+  padding:36px 28px; cursor:pointer; transition:all 0.4s;
+  position:relative; overflow:hidden; box-shadow:var(--card-shadow);
+}
+.ecosystem-card::after {
+  content:''; position:absolute; bottom:0; left:0; right:0; height:3px;
+  background:var(--gradient-brand); opacity:0; transition:opacity 0.4s;
+}
+.ecosystem-card:hover {
+  border-color:rgba(33,150,243,0.3); transform:translateY(-6px);
+  box-shadow:var(--card-hover-shadow);
+}
+.ecosystem-card:hover::after { opacity:1; }
+.ecosystem-card.expanded .eco-features { max-height:300px; opacity:1; margin-top:16px; }
+.eco-features { max-height:0; opacity:0; overflow:hidden; transition:all 0.5s ease; }
+.eco-features li {
+  list-style:none; padding:6px 0; font-size:0.9rem;
+  color:var(--text-secondary); display:flex; align-items:center; gap:8px;
+}
+.eco-features li::before { content:'\2192'; color:var(--primary-blue); font-weight:600; }
+.ecosystem-connector {
+  position:absolute; top:50%; left:0; right:0;
+  height:2px; background:linear-gradient(90deg, transparent, var(--primary-blue), var(--primary-purple), var(--primary-blue), transparent);
+  z-index:0; opacity:0.15;
+}
+.ecosystem-card-icon {
+  width:64px; height:64px; border-radius:16px; margin-bottom:16px;
+  display:flex; align-items:center; justify-content:center; font-size:1.8rem;
+}
+.expand-hint { font-size:0.8rem; color:var(--text-muted); margin-top:12px; display:flex; align-items:center; gap:4px; }
+
+.case-study {
+  background:var(--gradient-accent-light);
+  border:1px solid rgba(0,200,150,0.15); border-radius:16px;
+  padding:32px; margin-top:32px; position:relative;
+}
+.case-study::before {
+  content:'\201C'; position:absolute; top:12px; left:20px;
+  font-size:4rem; color:rgba(0,200,150,0.2); font-family:Georgia, serif; line-height:1;
+}
+
+footer {
+  padding:40px 5vw; text-align:center;
+  border-top:1px solid var(--border-light);
+  background:var(--bg-light);
+}
+footer p { font-size:0.85rem; color:var(--text-muted); }
+
+.hero-bg { position:absolute; inset:0; overflow:hidden; z-index:0; }
+.hero-bg::before {
+  content:''; position:absolute; width:800px; height:800px;
+  background:radial-gradient(circle, rgba(33,150,243,0.08) 0%, transparent 70%);
+  top:-200px; right:-200px; animation:float-orb 20s ease-in-out infinite;
+}
+.hero-bg::after {
+  content:''; position:absolute; width:600px; height:600px;
+  background:radial-gradient(circle, rgba(124,58,237,0.06) 0%, transparent 70%);
+  bottom:-100px; left:-100px; animation:float-orb 25s ease-in-out infinite reverse;
+}
+@keyframes float-orb {
+  0%, 100% { transform:translate(0,0) scale(1); }
+  33% { transform:translate(40px,-30px) scale(1.05); }
+  66% { transform:translate(-20px,20px) scale(0.95); }
+}
+@keyframes gradient-shift {
+  0% { background-position:0% 50%; }
+  50% { background-position:100% 50%; }
+  100% { background-position:0% 50%; }
+}
+@keyframes fade-in-up {
+  from { opacity:0; transform:translateY(40px); }
+  to { opacity:1; transform:translateY(0); }
+}
+@keyframes slide-in-left {
+  from { opacity:0; transform:translateX(-60px); }
+  to { opacity:1; transform:translateX(0); }
+}
+@keyframes slide-in-right {
+  from { opacity:0; transform:translateX(60px); }
+  to { opacity:1; transform:translateX(0); }
+}
+@keyframes scale-in {
+  from { opacity:0; transform:scale(0.85); }
+  to { opacity:1; transform:scale(1); }
+}
+@keyframes shimmer {
+  0% { background-position:-200% 0; }
+  100% { background-position:200% 0; }
+}
+@keyframes counter-spin {
+  from { transform:rotate(0deg); }
+  to { transform:rotate(360deg); }
+}
+@keyframes gentle-bounce {
+  0%, 100% { transform:translateY(0); }
+  50% { transform:translateY(-8px); }
+}
+@keyframes scroll-hint {
+  0%, 100% { opacity:0.4; transform:translateY(0); }
+  50% { opacity:1; transform:translateY(8px); }
+}
+
+/* Animated gradient borders */
+.animated-border {
+  position:relative;
+}
+.animated-border::before {
+  content:''; position:absolute; inset:-2px; border-radius:inherit; z-index:-1;
+  background:linear-gradient(90deg, #2196F3, #7C3AED, #00C896, #2196F3);
+  background-size:300% 100%;
+  animation:gradient-shift 4s ease infinite;
+  opacity:0; transition:opacity 0.4s;
+}
+.animated-border:hover::before { opacity:1; }
+
+/* Parallax photo panels */
+.photo-panel {
+  width:100%; border-radius:20px; overflow:hidden; position:relative;
+  box-shadow:0 12px 40px rgba(0,0,0,0.12);
+}
+.photo-panel img {
+  width:100%; height:100%; object-fit:cover; display:block;
+  transition:transform 0.6s ease;
+}
+.photo-panel:hover img { transform:scale(1.05); }
+.photo-panel .overlay-gradient {
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, transparent 40%, rgba(26,26,46,0.7) 100%);
+}
+
+/* Floating particles */
+.particle {
+  position:absolute; border-radius:50%; pointer-events:none; z-index:0;
+  animation:float-orb var(--dur, 20s) ease-in-out infinite var(--delay, 0s);
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position:absolute; bottom:32px; left:50%; transform:translateX(-50%); z-index:2;
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+}
+.scroll-indicator span { font-size:0.75rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.1em; }
+.scroll-indicator svg { animation:scroll-hint 2s ease-in-out infinite; }
+
+/* Stat counter animation */
+.stat-animated .stat-value {
+  background:var(--gradient-brand); -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  background-clip:text; background-size:200% 100%;
+  animation:gradient-shift 3s ease infinite;
+}
+
+/* Card entrance animations */
+.card-slide-left { animation:slide-in-left 0.8s ease forwards; }
+.card-slide-right { animation:slide-in-right 0.8s ease forwards; }
+
+/* Glowing pulse for stat boxes */
+.stat-glow {
+  animation:stat-pulse 3s ease-in-out infinite;
+}
+@keyframes stat-pulse {
+  0%, 100% { box-shadow:0 0 0 rgba(33,150,243,0); }
+  50% { box-shadow:0 0 40px rgba(33,150,243,0.08); }
+}
+
+/* Subtle float for ecosystem cards on hover */
+.ecosystem-card { animation:gentle-bounce 6s ease-in-out infinite; animation-play-state:paused; }
+.ecosystem-card:hover { animation-play-state:running; }
+
+/* Photo panel subtle overlay (shimmer removed for cleaner look) */
+.photo-panel::after {
+  content:''; position:absolute; inset:0; z-index:0;
+  pointer-events:none;
+}
+
+/* Image comparison slider placeholder */
+.img-showcase {
+  display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:40px;
+}
+.img-showcase .photo-panel { height:280px; }
+
+/* Trusted logos marquee for continuous scroll */
+.logo-marquee {
+  overflow:hidden; position:relative;
+}
+.logo-marquee::before, .logo-marquee::after {
+  content:''; position:absolute; top:0; bottom:0; width:80px; z-index:2;
+}
+.logo-marquee::before { left:0; background:linear-gradient(90deg, var(--bg-light), transparent); }
+.logo-marquee::after { right:0; background:linear-gradient(90deg, transparent, var(--bg-light)); }
+
+.grid-pattern {
+  position:absolute; inset:0; z-index:0;
+  background-image:
+    linear-gradient(rgba(33,150,243,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(33,150,243,0.03) 1px, transparent 1px);
+  background-size:60px 60px;
+}
+
+.gradient-text {
+  background:var(--gradient-brand);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+@media (max-width:900px) {
+  .grid-3 { grid-template-columns:1fr; }
+  .grid-2 { grid-template-columns:1fr; }
+  .ecosystem-row { flex-direction:column; align-items:center; }
+  .ecosystem-connector { display:none; }
+  .nav-dots { right:12px; }
+  .nav-dot .tooltip { display:none; }
+  section { padding:60px 20px; }
+  .comparison-table { font-size:0.8rem; }
+  .comparison-table th, .comparison-table td { padding:10px 12px; }
+  .energy-grid { flex-direction:column; }
+  .energy-arrow { transform:rotate(90deg); }
+  .mockup-stat-grid { grid-template-columns:1fr; }
+}
+@media (max-width:600px) {
+  h1 { font-size:2rem; }
+  h2 { font-size:1.6rem; }
+  .btn { padding:12px 24px; font-size:0.9rem; }
+  .stat-value { font-size:2rem; }
+}
+</style>
+</head>
+<body>
+
+<svg style="position:absolute;width:0;height:0">
+  <defs>
+    <linearGradient id="ring-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2196F3"/>
+      <stop offset="100%" stop-color="#00C896"/>
+    </linearGradient>
+    <linearGradient id="zynka-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2196F3"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<nav class="nav-dots" id="navDots">
+  <button class="nav-dot active" data-section="0"><span class="tooltip">Home</span></button>
+  <button class="nav-dot" data-section="1"><span class="tooltip">Trusted By</span></button>
+  <button class="nav-dot" data-section="2"><span class="tooltip">The Problem</span></button>
+  <button class="nav-dot" data-section="3"><span class="tooltip">Ecosystem</span></button>
+  <button class="nav-dot" data-section="4"><span class="tooltip">ZynkaCharge</span></button>
+  <button class="nav-dot" data-section="5"><span class="tooltip">White Label</span></button>
+  <button class="nav-dot" data-section="6"><span class="tooltip">ZynkaOne</span></button>
+  <button class="nav-dot" data-section="7"><span class="tooltip">ZynkaOps</span></button>
+  <button class="nav-dot" data-section="8"><span class="tooltip">Integration</span></button>
+  <button class="nav-dot" data-section="9"><span class="tooltip">Results</span></button>
+  <button class="nav-dot" data-section="10"><span class="tooltip">Testimonials</span></button>
+  <button class="nav-dot" data-section="11"><span class="tooltip">Energy</span></button>
+  <button class="nav-dot" data-section="12"><span class="tooltip">Pricing</span></button>
+  <button class="nav-dot" data-section="13"><span class="tooltip">About</span></button>
+  <button class="nav-dot" data-section="14"><span class="tooltip">Contact</span></button>
+</nav>
+
+<!-- ==================== HERO ==================== -->
+<section id="sec-hero" style="position:relative; overflow:hidden;">
+  <div class="hero-bg"></div>
+  <div class="grid-pattern"></div>
+  <!-- Floating particles -->
+  <div class="particle" style="width:6px; height:6px; background:rgba(33,150,243,0.3); top:15%; left:10%; --dur:18s; --delay:0s;"></div>
+  <div class="particle" style="width:4px; height:4px; background:rgba(124,58,237,0.25); top:25%; right:15%; --dur:22s; --delay:2s;"></div>
+  <div class="particle" style="width:8px; height:8px; background:rgba(0,200,150,0.2); bottom:30%; left:20%; --dur:25s; --delay:4s;"></div>
+  <div class="particle" style="width:5px; height:5px; background:rgba(33,150,243,0.2); top:60%; right:25%; --dur:20s; --delay:1s;"></div>
+  <div class="particle" style="width:3px; height:3px; background:rgba(124,58,237,0.3); bottom:20%; right:10%; --dur:16s; --delay:3s;"></div>
+  <div class="section-inner" style="text-align:center; position:relative; z-index:1;">
+    <div class="reveal" style="margin-bottom:40px;">
+      <img src="zynka-logo.jpg" alt="Zynka" style="height:64px; width:auto;">
+    </div>
+    <div class="badge reveal reveal-delay-1" style="margin-bottom:24px;">Intelligent Solutions for a Sustainable World</div>
+    <h1 class="reveal reveal-delay-2" style="margin-bottom:20px;">
+      One Platform. Every Charger.<br>
+      <span class="gradient-text">Zero Downtime.</span>
+    </h1>
+    <p class="reveal reveal-delay-3" style="max-width:640px; margin:0 auto 40px; font-size:1.15rem;">
+      The integrated charging management platform that brings your CPMS, field service and operations together. Cheaper than the big providers. More integrated than anything else on the market.
+    </p>
+    <div class="reveal reveal-delay-4" style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+      <a href="#sec-problem" class="btn btn-primary animated-border" style="border-radius:12px;">
+        See How It Works
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3v10M4 9l4 4 4-4"/></svg>
+      </a>
+      <a href="#sec-contact" class="btn btn-secondary animated-border" style="border-radius:12px;">Book a Demo</a>
+    </div>
+    <!-- Hero image showcase -->
+    <div class="reveal reveal-delay-4" style="margin-top:48px;">
+      <div class="photo-panel" style="max-width:900px; margin:0 auto; height:380px;">
+        <img src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=1200&q=85&auto=format" alt="Modern EV charging infrastructure" loading="lazy">
+        <div class="overlay-gradient"></div>
+        <div style="position:absolute; bottom:24px; left:32px; color:#fff; text-align:left; z-index:1;">
+          <p style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; opacity:0.8; margin-bottom:4px;">Trusted by leading CPOs and fleet operators</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span>Scroll to explore</span>
+    <svg width="20" height="20" fill="none" stroke="var(--text-muted)" stroke-width="2"><path d="M10 4v12M5 11l5 5 5-5"/></svg>
+  </div>
+</section>
+
+<!-- ==================== TRUSTED BY ==================== -->
+<!--
+  HOW TO CUSTOMISE THIS SECTION PER CLIENT
+  =========================================
+  Edit the trustedLogos array below. Each entry needs:
+    name  â company name (used as alt text and fallback if no logo image)
+    logo  â filename of a logo image in the same folder (e.g. "client-logo.png"), or "" for text only
+    url   â website link, or "" for no link
+
+  To add a new client: drop their logo PNG into this folder and add a line to the array.
+  To remove one: delete or comment out the line.
+-->
+<section id="sec-trust" style="min-height:auto; padding:56px 5vw; scroll-snap-align:none; background:var(--bg-light);">
+  <div class="section-inner" style="text-align:center;">
+    <p class="reveal" style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--text-muted); margin-bottom:40px;">Trusted by Leading CPOs, Installers and Fleet Operators</p>
+    <div id="trusted-logos" class="reveal reveal-delay-1" style="display:flex; align-items:center; justify-content:center; gap:28px; flex-wrap:wrap;">
+    </div>
+  </div>
+</section>
+<script>
+/* ââ EDITABLE CLIENT LOGO LIST ââ */
+const trustedLogos = [
+  { name: "Safer Charging",     logo: "safer-charging-logo.png",   url: "https://www.safercharging.co.uk" },
+  { name: "KEBA",               logo: "",                          url: "https://www.keba.com/en/emobility/emobility" },
+  { name: "Tellus Power Green", logo: "tellus-logo.png",           url: "https://telluspowergreen.com" },
+  { name: "Kentures",           logo: "kentures-logo.png",         url: "https://kentures.com" },
+  { name: "EVC Solutions",      logo: "evc-solutions-logo.png",    url: "https://evcsolutions.co.uk" },
+  { name: "Suzuki",             logo: "suzuki-logo.png",           url: "https://www.suzuki.co.uk" },
+];
+
+(function buildTrustedLogos() {
+  const container = document.getElementById('trusted-logos');
+  trustedLogos.forEach(function(item) {
+    const cardStyle = 'padding:16px 28px; border:1px solid var(--border-card); border-radius:12px; background:var(--bg-white); box-shadow:var(--card-shadow); transition:all 0.3s; display:flex; align-items:center;';
+    let inner = '';
+    if (item.logo) {
+      inner = '<img src="' + item.logo + '" alt="' + item.name + '" style="height:36px; width:auto;">';
+    } else {
+      const colour = item.name === 'KEBA' ? '#00843D' : 'var(--text-dark)';
+      const weight = item.name === 'KEBA' ? '700' : '600';
+      inner = '<span style="font-size:1rem; font-weight:' + weight + '; color:' + colour + '; letter-spacing:0.02em;">' + item.name + '</span>';
+    }
+    let el;
+    if (item.url) {
+      el = document.createElement('a');
+      el.href = item.url;
+      el.target = '_blank';
+      el.rel = 'noopener';
+      el.style.cssText = 'text-decoration:none; transition:all 0.3s;';
+      el.onmouseover = function() { this.style.transform = 'translateY(-3px)'; };
+      el.onmouseout = function() { this.style.transform = 'translateY(0)'; };
+    } else {
+      el = document.createElement('div');
+    }
+    const card = document.createElement('div');
+    card.style.cssText = cardStyle;
+    card.innerHTML = inner;
+    el.appendChild(card);
+    container.appendChild(el);
+  });
+})();
+</script>
+
+<!-- ==================== THE PROBLEM ==================== -->
+<section id="sec-problem" style="background:var(--bg-white);">
+  <div class="grid-pattern"></div>
+  <div class="section-inner" style="position:relative;z-index:1;">
+    <div style="text-align:center; margin-bottom:60px;">
+      <div class="badge reveal" style="margin-bottom:16px;">The Challenge</div>
+      <h2 class="reveal reveal-delay-1">Your Charging Network Is Running<br>on Disconnected Tools</h2>
+      <div class="reveal reveal-delay-2" style="margin-top:32px;">
+        <div class="photo-panel" style="max-width:800px; margin:0 auto; height:260px;">
+          <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=1200&q=85&auto=format" alt="Electric vehicles charging at a public station" loading="lazy">
+          <div class="overlay-gradient"></div>
+        </div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card reveal reveal-delay-1">
+        <div class="card-icon">
+          <svg width="28" height="28" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="22" height="10" rx="3"/><rect x="3" y="15" width="22" height="10" rx="3"/><path d="M7 8h2M7 20h2"/></svg>
+        </div>
+        <h4 style="margin-bottom:12px;">Separate Systems Everywhere</h4>
+        <p style="font-size:0.95rem;">When a charger goes offline, your ops team sees it in one tool, your engineer gets a call, your billing team finds out later. Three systems, three delays, one frustrated driver.</p>
+      </div>
+      <div class="card reveal reveal-delay-2">
+        <div class="card-icon">
+          <svg width="28" height="28" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round"><circle cx="14" cy="14" r="11"/><path d="M14 8v6l4 2"/></svg>
+        </div>
+        <h4 style="margin-bottom:12px;">Reactive Maintenance Drains Revenue</h4>
+        <p style="font-size:0.95rem;">Every hour of unplanned downtime costs revenue. Most platforms only tell you after the damage is done. By then, you have already lost sessions, trust and money.</p>
+      </div>
+      <div class="card reveal reveal-delay-3">
+        <div class="card-icon">
+          <svg width="28" height="28" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round"><path d="M4 14h5l3-8 4 16 3-8h5"/></svg>
+        </div>
+        <h4 style="margin-bottom:12px;">No Single View of Your Operation</h4>
+        <p style="font-size:0.95rem;">CPOs, installers, maintenance teams and drivers all using different platforms with no shared visibility. Important information slips through the cracks every single day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== THE ECOSYSTEM ==================== -->
+<section id="sec-ecosystem" style="background:var(--bg-light); overflow:hidden;">
+  <div class="hero-bg"></div>
+  <div class="grid-pattern"></div>
+  <!-- Floating particles -->
+  <div class="particle" style="width:8px; height:8px; background:rgba(0,200,150,0.1); top:10%; left:5%; --dur:24s; --delay:1s;"></div>
+  <div class="section-inner" style="position:relative;z-index:1;">
+    <div style="text-align:center; margin-bottom:60px;">
+      <div class="badge badge-accent reveal" style="margin-bottom:16px;">The Solution</div>
+      <h2 class="reveal reveal-delay-1">Meet the Zynka Ecosystem</h2>
+      <p class="reveal reveal-delay-2" style="max-width:560px; margin:16px auto 0;">Three platforms, one backbone. Click each to explore.</p>
+      <div class="reveal reveal-delay-3" style="margin-top:32px;">
+        <div class="photo-panel" style="max-width:860px; margin:0 auto; height:240px;">
+          <img src="https://images.unsplash.com/photo-1647166545674-ce28ce93bdca?w=1200&q=85&auto=format" alt="Row of EV charge points in a modern car park" loading="lazy">
+          <div class="overlay-gradient"></div>
+          <div style="position:absolute; bottom:20px; left:28px; color:#fff; z-index:1;">
+            <p style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; opacity:0.8;">One ecosystem powering your entire charging network</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="position:relative;">
+      <div class="ecosystem-connector reveal"></div>
+      <div class="ecosystem-row">
+        <div class="ecosystem-card reveal reveal-delay-1" onclick="this.classList.toggle('expanded')">
+          <div class="ecosystem-card-icon" style="background:var(--light-blue);">
+            <svg width="32" height="32" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round"><path d="M16 4v6M8 28h16M12 28V18h8v10M6 18h20"/><circle cx="16" cy="10" r="3" fill="rgba(33,150,243,0.15)"/></svg>
+          </div>
+          <h3 style="margin-bottom:8px;">ZynkaCharge</h3>
+          <p style="font-size:0.9rem;">Charge Point Management System. Real time monitoring, analytics, and control for every charger in your network.</p>
+          <div class="expand-hint">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3v8M3 7l4 4 4-4"/></svg>
+            Click to expand
+          </div>
+          <ul class="eco-features">
+            <li>Real time monitoring and analytics</li>
+            <li>White label customisation</li>
+            <li>OCPP and OCPI compatible</li>
+            <li>Multi payment options (QR, NFC, RFID)</li>
+            <li>Zone based charger management</li>
+            <li>AI chatbot support with ticket system</li>
+          </ul>
+        </div>
+        <div class="ecosystem-card reveal reveal-delay-2" onclick="this.classList.toggle('expanded')">
+          <div class="ecosystem-card-icon" style="background:var(--accent-bg);">
+            <svg width="32" height="32" fill="none" stroke="#00C896" stroke-width="2" stroke-linecap="round"><rect x="4" y="6" width="24" height="20" rx="3"/><path d="M4 12h24M10 18h6M10 22h4"/></svg>
+          </div>
+          <h3 style="margin-bottom:8px;">ZynkaOne</h3>
+          <p style="font-size:0.9rem;">CRM, ERP and business management. Four portals, one platform. Manage leads, invoices, schedules and more.</p>
+          <div class="expand-hint">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3v8M3 7l4 4 4-4"/></svg>
+            Click to expand
+          </div>
+          <ul class="eco-features">
+            <li>Company, Customer, Engineer, Vendor portals</li>
+            <li>Lead and sales management</li>
+            <li>Invoicing and payments</li>
+            <li>AI optimised scheduling</li>
+            <li>Dynamic lead scoring and forecasting</li>
+            <li>Mobile friendly at no additional cost</li>
+          </ul>
+        </div>
+        <div class="ecosystem-card reveal reveal-delay-3" onclick="this.classList.toggle('expanded')">
+          <div class="ecosystem-card-icon" style="background:var(--light-purple);">
+            <svg width="32" height="32" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round"><path d="M6 26l6-8 4 4 6-8"/><circle cx="26" cy="10" r="3"/><rect x="4" y="4" width="24" height="24" rx="3"/></svg>
+          </div>
+          <h3 style="margin-bottom:8px;">ZynkaOps</h3>
+          <p style="font-size:0.9rem;">Field service management and operations. Dispatch engineers, track jobs, prevent faults before they happen.</p>
+          <div class="expand-hint">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3v8M3 7l4 4 4-4"/></svg>
+            Click to expand
+          </div>
+          <ul class="eco-features">
+            <li>Assign and track field engineers</li>
+            <li>Preventative maintenance scheduling</li>
+            <li>Predictive downtime alerts</li>
+            <li>Support ticket escalation</li>
+            <li>Real time job tracking with media</li>
+            <li>AI driven scheduling and routing</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <p class="reveal" style="text-align:center; margin-top:48px; font-size:1.1rem; font-weight:500; color:var(--text-dark);">
+      Individually powerful. <span class="gradient-text">Together, unbeatable.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ==================== ZYNKACHARGE DEEP DIVE ==================== -->
+<section id="sec-charge" style="background:var(--bg-white); overflow:hidden;">
+  <div class="grid-pattern"></div>
+  <div class="particle" style="width:5px; height:5px; background:rgba(33,150,243,0.25); top:12%; right:8%; --dur:20s; --delay:2s;"></div>
+  <div class="particle" style="width:4px; height:4px; background:rgba(0,200,150,0.2); bottom:15%; left:6%; --dur:18s; --delay:0s;"></div>
+  <div class="section-inner" style="position:relative;z-index:1;">
+    <div class="badge reveal" style="margin-bottom:16px;">ZynkaCharge</div>
+    <h2 class="reveal reveal-delay-1" style="margin-bottom:16px;">Charge Point Management,<br>Reimagined</h2>
+    <div class="reveal reveal-delay-2" style="margin-bottom:40px;">
+      <div class="photo-panel" style="max-width:100%; height:220px;">
+        <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=1200&q=85&auto=format" alt="Electric vehicle connected to a public charging station" loading="lazy">
+        <div class="overlay-gradient"></div>
+        <div style="position:absolute; bottom:18px; left:24px; color:#fff; z-index:1;">
+          <p style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; opacity:0.8;">Real time visibility across every charger in your network</p>
+        </div>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div>
+        <div class="feature-item reveal">
+          <div class="feature-check"><svg fill="none" stroke="#00C896" stroke-width="2.5" stroke-linecap="round"><path d="M3 7l4 4 7-7"/></svg></div>
+          <div><h4>Real Time Monitoring</h4><p style="font-size:0.9rem; margin-top:4px;">Live status, energy consumption and session data across your entire network from a single dashboard.</p></div>
+        </div>
+        <div class="feature-item reveal reveal-delay-1">
+          <div class="feature-check"><svg fill="none" stroke="#00C896" stroke-width="2.5" stroke-linecap="round"><path d="M3 7l4 4 7-7"/></svg></div>
+          <div><h4>White Label Ready</h4><p style="font-size:0.9rem; margin-top:4px;">Your brand, your platform. Full customisation of the driver experience with your colours, logo and domain.</p></div>
+        </div>
+        <div class="feature-item reveal reveal-delay-2">
+          <div class="feature-check"><svg fill="none" stroke="#00C896" stroke-width="2.5" stroke-linecap="round"><path d="M3 7l4 4 7-7"/></svg></div>
+          <div><h4>OCPP and OCPI Compatible</h4><p style="font-size:0.9rem; margin-top:4px;">Hardware agnostic. Connect any OCPP compliant charger and roam across networks with OCPI.</p></div>
+        </div>
+        <div class="feature-item reveal reveal-delay-3">
+          <div class="feature-check"><svg fill="none" stroke="#00C896" stroke-width="2.5" stroke-linecap="round"><path d="M3 7l4 4 7-7"/></svg></div>
+          <div><h4>Appless Charging</h4><p style="font-size:0.9rem; margin-top:4px;">Drivers can pay and charge via QR code, NFC, or RFID. No app download required.</p></div>
+        </div>
+        <div class="feature-item reveal reveal-delay-4">
+          <div class="feature-check"><svg fill="none" stroke="#00C896" stroke-width="2.5" stroke-linecap="round"><path d="M3 7l4 4 7-7"/></svg></div>
+          <div><h4>24/7 AI Support</h4><p style="font-size:0.9rem; margin-top:4px;">Integrated AI chatbot handles driver queries around the clock, with automatic ticket creation for complex issues.</p></div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="mockup-frame">
+          <div class="mockup-titlebar">
+            <div class="mockup-dot red"></div><div class="mockup-dot yellow"></div><div class="mockup-dot green"></div>
+            <span style="font-size:0.75rem;color:var(--text-muted);margin-left:8px;">ZynkaCharge â CPMS Dashboard</span>
+          </div>
+          <div class="mockup-content">
+            <div class="mockup-overlay">Screenshot Placeholder â Replace with actual platform image</div>
+            <div class="mockup-stat-grid">
+              <div class="mockup-stat"><div class="mockup-stat-value" style="color:var(--accent);">1,247</div><div class="mockup-stat-label">Active Sessions</div></div>
+              <div class="mockup-stat"><div class="mockup-stat-value" style="color:var(--primary-blue);">98.7%</div><div class="mockup-stat-label">Network Uptime</div></div>
+              <div class="mockup-stat"><div class="mockup-stat-value" style="color:var(--primary-purple);">&pound;47,200</div><div class="mockup-stat-label">Revenue This Month</div></div>
+            </div>
+            <div class="mockup-row"><div class="mockup-row-dot" style="background:var(--accent);"></div><span class="mockup-row-text">CP-0042 â Westminster â Charging (42 kW)</span><span class="mockup-row-badge" style="background:rgba(0,200,150,0.1);color:var(--accent);">Active</span></div>
+            <div class="mockup-row"><div class="mockup-row-dot" style="background:var(--accent);"></div><span class="mockup-row-text">CP-0118 â Camden â Charging (7.4 kW)</span><span class="mockup-row-badge" style="background:rgba(0,200,150,0.1);color:var(--accent);">Active</span></div>
+            <div class="mockup-row"><div class="mockup-row-dot" style="background:var(--primary-blue);"></div><span class="mockup-row-text">CP-0203 â Islington â Available</span><span class="mockup-row-badge" style="background:rgba(33,150,243,0.1);color:var(--primary-blue);">Ready</span></div>
+            <div class="mockup-row"><div class="mockup-row-dot" style="background:#FFBD2E;"></div><span class="mockup-row-text">CP-0087 â Hackney â Scheduled Maintenance</span><span class="mockup-row-badge" style="background:rgba(255,189,46,0.1);color:#D4960A;">Maint.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== WHITE LABEL DEMO ==================== -->
+<section id="sec-whitelabel" style="min-height:80vh; background:var(--bg-light);">
+  <div class="section-inner" style="position:relative;z-index:1;">
+    <div class="reveal" style="margin-top:56px;">
+      <div style="text-align:center; margin-bottom:24px;">
+        <span class="badge badge-accent">WHITE LABEL IN ACTION</span>
+        <h3 style="margin-top:12px;">How It Looks With Your Brand</h3>
+        <p style="font-size:0.95rem; max-width:560px; margin:8px auto 0;">Every element carries your identity. Here is how ZynkaCharge looks when white labelled for your organisation. Your clients get a premium branded platform at a fraction of the cost of going direct to the larger providers, fully integrated with your existing maintenance and operations workflow.</p>
+      </div>
+      <div class="grid-2" style="gap:24px;">
+        <div>
+          <p style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-muted); margin-bottom:8px; text-align:center;">Default Zynka Platform</p>
+          <div class="mockup-frame">
+            <div class="mockup-titlebar">
+              <div class="mockup-dot red"></div><div class="mockup-dot yellow"></div><div class="mockup-dot green"></div>
+              <span style="font-size:0.75rem; color:var(--text-muted); margin-left:8px;">cms.zynkatech.com</span>
+            </div>
+            <div class="mockup-content" style="min-height:220px;">
+              <div style="display:flex; align-items:center; gap:12px; margin-bottom:20px; padding-bottom:12px; border-bottom:1px solid var(--border-light);">
+                <img src="zynka-logo.jpg" alt="Zynka" style="height:24px; width:auto;">
+                <span style="font-size:0.8rem; color:var(--text-muted);">CPMS Dashboard</span>
+                <span style="margin-left:auto; font-size:0.75rem; background:rgba(0,200,150,0.1); color:var(--accent); padding:3px 10px; border-radius:20px;">Live</span>
+              </div>
+              <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:16px;">
+                <div style="background:var(--light-blue); border:1px solid rgba(33,150,243,0.1); border-radius:8px; padding:12px;">
+                  <p style="font-size:0.7rem; color:var(--text-muted);">Active Sessions</p>
+                  <p style="font-size:1.3rem; font-weight:700; color:var(--primary-blue);">847</p>
+                </div>
+                <div style="background:var(--accent-bg); border:1px solid rgba(0,200,150,0.1); border-radius:8px; padding:12px;">
+                  <p style="font-size:0.7rem; color:var(--text-muted);">Uptime</p>
+                  <p style="font-size:1.3rem; font-weight:700; color:var(--accent);">99.1%</p>
+                </div>
+                <div style="background:var(--light-purple); border:1px solid rgba(124,58,237,0.1); border-radius:8px; padding:12px;">
+                  <p style="font-size:0.7rem; color:var(--text-muted);">Revenue</p>
+                  <p style="font-size:1.3rem; font-weight:700; color:var(--primary-purple);">&pound;24.8k</p>
+                </div>
+              </div>
+              <div style="display:flex; gap:8px;">
+                <div style="flex:1; height:4px; background:var(--primary-blue); border-radius:2px;"></div>
+                <div style="flex:0.7; height:4px; background:var(--accent); border-radius:2px;"></div>
+                <div style="flex:0.4; height:4px; background:var(--primary-purple); border-radius:2px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--accent); margin-bottom:8px; text-align:center;">White Labelled for Your Brand</p>
+          <div class="mockup-frame" style="border-color:rgba(46,125,125,0.3);">
+            <div class="mockup-titlebar" style="background:rgba(46,125,125,0.06);">
+              <div class="mockup-dot red"></div><div class="mockup-dot yellow"></div><div class="mockup-dot green"></div>
+              <span style="font-size:0.75rem; color:var(--text-muted); margin-left:8px;">charging.yourclientbrand.com</span>
+            </div>
+            <div class="mockup-content" style="min-height:220px;">
+              <div style="display:flex; align-items:center; gap:12px; margin-bottom:20px; padding-bottom:12px; border-bottom:1px solid rgba(46,125,125,0.15);">
+                <span style="font-size:0.95rem; font-weight:700; background:var(--gradient-brand); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">Your Brand</span>
+                <span style="font-size:0.8rem; color:rgba(46,125,125,0.6);">CPMS Dashboard</span>
+                <span style="margin-left:auto; font-size:0.75rem; background:rgba(58,148,148,0.1); color:#2E7D7D; padding:3px 10px; border-radius:20px;">Live</span>
+              </div>
+              <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:16px;">
+                <div style="background:rgba(46,125,125,0.05); border:1px solid rgba(46,125,125,0.1); border-radius:8px; padding:12px;">
+                  <p style="font-size:0.7rem; color:var(--text-muted);">Active Sessions</p>
+                  <p style="font-size:1.3rem; font-weight:700; color:#2E7D7D;">847</p>
+                </div>
+                <div style="background:rgba(46,125,125,0.05); border:1px solid rgba(46,125,125,0.1); border-radius:8px; padding:12px;">
+                  <p style="font-size:0.7rem; color:var(--text-muted);">Uptime</p>
+                  <p style="font-size:1.3rem; font-weight:700; color:#3A9494;">99.1%</p>
+                </div>
+                <div style="background:rgba(46,125,125,0.05); border:1px solid rgba(46,125,125,0.1); border-radius:8px; padding:12px;">
+                  <p style="font-size:0.7rem; color:var(--text-muted);">Revenue</p>
+                  <p style="font-size:1.3rem; font-weight:700; color:#5AB8B8;">&pound;24.8k</p>
+                </div>
+              </div>
+              <div style="display:flex; gap:8px;">
+                <div style="flex:1; height:4px; background:#2E7D7D; border-radius:2px;"></div>
+                <div style="flex:0.7; height:4px; background:#3A9494; border-radius:2px;"></div>
+                <div style="flex:0.4; height:4px; background:#5AB8B8; border-radius:2px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p style="text-align:center; margin-top:20px; font-size:0.85rem; color:var(--text-muted);">Same powerful platform. Completely your brand. Your colours, your domain, your driver app.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ZYNKAONE DEEP DIVE ==================== -->
+<section id="sec-one" style="background:var(--bg-white); overflow:hidden;">
+  <div class="grid-pattern"></div>
+  <div class="particle" style="width:6px; height:6px; background:rgba(0,200,150,0.2); top:20%; right:5%; --dur:21s; --delay:1s;"></div>
+  <div class="particle" style="width:4px; height:4px; background:rgba(124,58,237,0.2); bottom:25%; left:8%; --dur:17s; --delay:3s;"></div>
+  <div class="section-inner" style="position:relative;z-index:1;">
+    <div style="text-align:right;">
+      <div class="badge reveal" style="margin-bottom:16px;">ZynkaOne</div>
+    </div>
+    <h2 class="reveal reveal-delay-1" style="text-align:right; margin-bottom:16px;">Your Entire Business.<br>One Platform.</h2>
+    <div class="reveal reveal-delay-2" style="margin-bottom:40px;">
+      <div class="photo-panel" style="max-width:100%; height:200px;">
+        <img src="https://images.unsplash.com/photo-1571987502227-9231b837d92a?w=1200&q=85&auto=format" alt="Row of electric vehicle chargers at a modern car park" loading="lazy">
+        <div class="overlay-gradient"></div>
+        <div style="position:absolute; bottom:18px; right:24px; color:#fff; text-align:right; z-index:1;">
+          <p style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; opacity:0.8;">Manage your entire EV operation from a single platform</p>
+        </div>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="reveal reveal-delay-1">
+        <div class="mockup-frame">
+          <div class="mockup-titlebar">
+            <div class="mockup-dot red"></div><div class="mockup-dot yellow"></div><div class="mockup-dot green"></div>
+            <span style="font-size:0.75rem;color:var(--text-muted);margin-left:8px;">ZynkaOne â Company Portal</span>
+          </div>
+          <div class="mockup-content">
+            <div class="mockup-overlay">Screenshot Placeholder â Replace with actual platform image</div>
+            <div style="display:flex;gap:8px;margin-bottom:16px;">
+              <span style="padding:6px 14px;border-radius:8px;background:var(--light-blue);color:var(--primary-blue);font-size:0.75rem;font-weight:600;">Company</span>
+              <span style="padding:6px 14px;border-radius:8px;background:var(--bg-light);color:var(--text-muted);font-size:0.75rem;">Customer</span>
+              <span style="padding:6px 14px;border-radius:8px;background:var(--bg-light);color:var(--text-muted);font-size:0.75rem;">Engineer</span>
+              <span style="padding:6px 14px;border-radius:8px;background:var(--bg-light);color:var(--text-muted);font-size:0.75rem;">Vendor</span>
+            </div>
+            <div class="mockup-row"><div class="mockup-row-dot" style="background:var(--accent);"></div><span class="mockup-row-text">INV-2024-0342 â London Borough of Camden â &pound;12,400</span><span class="mockup-row-badge" style="background:rgba(0,200,150,0.1);color:var(--accent);">Paid</span></div>
+            <div class="mockup-row"><div class="mockup-row-dot" style="background:#FFBD2E;"></div><span class="mockup-row-text">INV-2024-0341 â TfL Fleet Services â &pound;28,900</span><span class="mockup-row-badge" style="background:rgba(255,189,46,0.1);color:#D4960A;">Pending</span></div>
+            <div class="mockup-row"><div class="mockup-row-dot" style="background:var(--primary-blue);"></div><span class="mockup-row-text">LEAD-0089 â National Highways â Site Survey Booked</span><span class="mockup-row-badge" style="background:rgba(33,150,243,0.1);color:var(--primary-blue);">Lead</span></div>
+            <div class="mockup-row"><div class="mockup-row-dot" style="background:var(--accent);"></div><span class="mockup-row-text">JOB-0421 â Southwark Install â Engineer Assigned</span><span class="mockup-row-badge" style="background:rgba(0,200,150,0.1);color:var(--accent);">Active</span></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="feature-item reveal"><div class="feature-check"><svg fill="none" stroke="#00C896" stroke-width="2.5" stroke-linecap="round"><path d="M3 7l4 4 7-7"/></svg></div><div><h4>Four Portals, Zero Friction</h4><p style="font-size:0.9rem; margin-top:4px;">Company, Customer, Engineer and Vendor portals give every stakeholder exactly the view they need.</p></div></div>
+        <div class="feature-item reveal reveal-delay-1"><div class="feature-check"><svg fill="none" stroke="#00C896" stroke-width="2.5" stroke-linecap="round"><path d="M3 7l4 4 7-7"/></svg></div><div><h4>Lead and Sales Management</h4><p style="font-size:0.9rem; margin-top:4px;">Dynamic lead scoring, pipeline management and sales forecasting powered by AI.</p></div></div>
+        <div class="feature-item reveal reveal-delay-2"><div class="feature-check"><svg fill="none" stroke="#00C896" stroke-width="2.5" stroke-linecap="round"><path d="M3 7l4 4 7-7"/></svg></div><div><h4>Invoicing and Payments</h4><p style="font-size:0.9rem; margin-top:4px;">Generate, send and track invoices. Automated payment reminders and reconciliation built in.</p></div></div>
+        <div class="feature-item reveal reveal-delay-3"><div class="feature-check"><svg fill="none" stroke="#00C896" stroke-width="2.5" stroke-linecap="round"><path d="M3 7l4 4 7-7"/></svg></div><div><h4>AI Optimised Scheduling</h4><p style="font-size:0.9rem; margin-top:4px;">Intelligent routing and scheduling that reduces travel time and gets more done in every working day.</p></div></div>
+        <div class="feature-item reveal reveal-delay-4"><div class="feature-check"><svg fill="none" stroke="#00C896" stroke-width="2.5" stroke-linecap="round"><path d="M3 7l4 4 7-7"/></svg></div><div><h4>Mobile Friendly, No Extra Cost</h4><p style="font-size:0.9rem; margin-top:4px;">Every portal works beautifully on mobile. Your team can manage everything from site, the office or the road.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ZYNKAOPS DEEP DIVE ==================== -->
+<section id="sec-ops" style="background:var(--bg-light); overflow:hidden;">
+  <div class="grid-pattern"></div>
+  <div class="particle" style="width:7px; height:7px; background:rgba(124,58,237,0.15); top:8%; left:4%; --dur:23s; --delay:2s;"></div>
+  <div class="particle" style="width:5px; height:5px; background:rgba(33,150,243,0.2); bottom:12%; right:6%; --dur:19s; --delay:0s;"></div>
+  <div class="section-inner" style="position:relative;z-index:1;">
+    <div class="badge reveal" style="margin-bottom:16px;">ZynkaOps</div>
+    <h2 class="reveal reveal-delay-1" style="margin-bottom:8px;">Field Service That Actually Works</h2>
+    <p class="reveal reveal-delay-2" style="font-size:1.1rem; margin-bottom:24px; max-width:640px;">
+      <a href="https://www.safercharging.co.uk" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none; font-weight:600;">Safer Charging</a> runs their entire field operation on ZynkaOps. Here is why.
+    </p>
+    <div class="reveal reveal-delay-3" style="margin-bottom:40px;">
+      <div class="photo-panel" style="max-width:100%; height:200px;">
+        <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=1200&q=85&auto=format" alt="Engineer servicing an EV charge point installation" loading="lazy">
+        <div class="overlay-gradient"></div>
+        <div style="position:absolute; bottom:18px; left:24px; color:#fff; z-index:1;">
+          <p style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; opacity:0.8;">Keep every charger running with intelligent field service management</p>
+        </div>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-bottom:40px;">
+      <div>
+        <div class="grid-3" style="grid-template-columns:repeat(2,1fr);">
+          <div class="card reveal" style="padding:24px;">
+            <div class="card-icon" style="width:44px;height:44px;margin-bottom:12px;background:var(--accent-bg);"><svg width="22" height="22" fill="none" stroke="#00C896" stroke-width="2" stroke-linecap="round"><path d="M11 2v4M2 11h4M16 11h4M11 16v4M5 5l2 2M15 5l-2 2M5 17l2-2M15 17l-2-2"/></svg></div>
+            <h4 style="font-size:0.95rem;">Preventative Maintenance</h4>
+            <p style="font-size:0.8rem; margin-top:6px;">Schedule maintenance before faults occur. Reduce unplanned callouts.</p>
+          </div>
+          <div class="card reveal reveal-delay-1" style="padding:24px;">
+            <div class="card-icon" style="width:44px;height:44px;margin-bottom:12px;"><svg width="22" height="22" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round"><path d="M4 14h5l3-8 4 16 3-8h3"/></svg></div>
+            <h4 style="font-size:0.95rem;">Predictive Downtime Alerts</h4>
+            <p style="font-size:0.8rem; margin-top:6px;">AI spots patterns that signal upcoming failures, days before they happen.</p>
+          </div>
+          <div class="card reveal reveal-delay-2" style="padding:24px;">
+            <div class="card-icon" style="width:44px;height:44px;margin-bottom:12px;background:var(--light-purple);"><svg width="22" height="22" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="8" r="4"/><path d="M3 20c0-4 4-7 8-7s8 3 8 7"/></svg></div>
+            <h4 style="font-size:0.95rem;">Engineer Dispatch</h4>
+            <p style="font-size:0.8rem; margin-top:6px;">Assign and track field engineers for surveys, installs and maintenance.</p>
+          </div>
+          <div class="card reveal reveal-delay-3" style="padding:24px;">
+            <div class="card-icon" style="width:44px;height:44px;margin-bottom:12px;background:var(--accent-bg);"><svg width="22" height="22" fill="none" stroke="#00C896" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="16" height="16" rx="3"/><path d="M7 11l3 3 5-5"/></svg></div>
+            <h4 style="font-size:0.95rem;">Real Time Job Tracking</h4>
+            <p style="font-size:0.8rem; margin-top:6px;">Photos, videos and documents from site. Full audit trail for every job.</p>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="mockup-frame">
+          <div class="mockup-titlebar">
+            <div class="mockup-dot red"></div><div class="mockup-dot yellow"></div><div class="mockup-dot green"></div>
+            <span style="font-size:0.75rem;color:var(--text-muted);margin-left:8px;">ZynkaOps â Field Service Dashboard</span>
+          </div>
+          <div class="mockup-content">
+            <div class="mockup-overlay">Screenshot Placeholder â Replace with actual platform image</div>
+            <div class="mockup-stat-grid" style="grid-template-columns:repeat(2,1fr);">
+              <div class="mockup-stat"><div class="mockup-stat-value" style="color:var(--accent);font-size:1.2rem;">12</div><div class="mockup-stat-label">Engineers Active</div></div>
+              <div class="mockup-stat"><div class="mockup-stat-value" style="color:var(--primary-blue);font-size:1.2rem;">8</div><div class="mockup-stat-label">Jobs In Progress</div></div>
+            </div>
+            <div class="mockup-row"><div class="mockup-row-dot" style="background:var(--accent);"></div><span class="mockup-row-text">J. Smith â CP Install â Lambeth â On Site</span><span class="mockup-row-badge" style="background:rgba(0,200,150,0.1);color:var(--accent);">Live</span></div>
+            <div class="mockup-row"><div class="mockup-row-dot" style="background:var(--primary-blue);"></div><span class="mockup-row-text">A. Patel â Maint. Visit â Croydon â En Route</span><span class="mockup-row-badge" style="background:rgba(33,150,243,0.1);color:var(--primary-blue);">Travel</span></div>
+            <div class="mockup-row"><div class="mockup-row-dot" style="background:#FFBD2E;"></div><span class="mockup-row-text">R. Jones â Fault Repair â Greenwich â Queued</span><span class="mockup-row-badge" style="background:rgba(255,189,46,0.1);color:#D4960A;">Next</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="case-study reveal">
+      <div style="padding-left:20px;">
+        <p style="color:var(--text-dark); font-size:1.05rem; font-style:italic; line-height:1.7;">
+          <a href="https://www.safercharging.co.uk" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none; font-weight:600;">Safer Charging</a> manages both the physical and digital sides of EV maintenance through a single ZynkaOps dashboard. Their engineers, installers and the CPOs they support all work from one platform. When ZynkaCharge detects a fault, ZynkaOps already has the job queued and the right engineer assigned. One ecosystem for both physical and digital maintenance rather than two separate worlds stitched together. With hundreds of new sockets onboarding every month, that integration is what makes scale possible without scaling headcount.
+        </p>
+        <p style="margin-top:16px; font-weight:600; color:var(--accent); font-size:0.9rem;">â Safer Charging, ZynkaOps Customer</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== INTEGRATION ADVANTAGE ==================== -->
+<section id="sec-integration" style="background:var(--bg-white); overflow:hidden;">
+  <div class="hero-bg"></div>
+  <div class="grid-pattern"></div>
+  <div class="particle" style="width:8px; height:8px; background:rgba(0,200,150,0.12); top:15%; right:10%; --dur:26s; --delay:1s;"></div>
+  <div class="particle" style="width:5px; height:5px; background:rgba(33,150,243,0.18); bottom:20%; left:5%; --dur:20s; --delay:4s;"></div>
+  <div class="section-inner" style="position:relative;z-index:1;">
+    <div style="text-align:center; margin-bottom:48px;">
+      <div class="badge reveal" style="margin-bottom:16px;">The Difference</div>
+      <h2 class="reveal reveal-delay-1">Why Integrated Beats<br>Bolted Together</h2>
+      <div class="reveal reveal-delay-2" style="margin-top:28px;">
+        <div class="photo-panel" style="max-width:780px; margin:0 auto; height:220px;">
+          <img src="https://images.unsplash.com/photo-1606229365485-93a3b8ee0385?w=1200&q=85&auto=format" alt="Smart EV charging hub with multiple connectors" loading="lazy">
+          <div class="overlay-gradient"></div>
+          <div style="position:absolute; bottom:18px; left:24px; color:#fff; z-index:1;">
+            <p style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; opacity:0.8;">From fault detection to fix in minutes, not days</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-bottom:48px;">
+      <div>
+        <div class="workflow">
+          <div class="workflow-step reveal"><div class="workflow-num" style="background:var(--light-blue);color:var(--primary-blue);">1</div><div><h4>Charger Fault Detected</h4><p style="font-size:0.85rem;">ZynkaCharge detects an anomaly in real time and flags the charger.</p></div><div class="workflow-line"></div></div>
+          <div class="workflow-step reveal reveal-delay-1"><div class="workflow-num" style="background:var(--light-purple);color:var(--primary-purple);">2</div><div><h4>Ticket Auto Raised</h4><p style="font-size:0.85rem;">ZynkaOps automatically creates a support ticket with full diagnostics.</p></div><div class="workflow-line"></div></div>
+          <div class="workflow-step reveal reveal-delay-2"><div class="workflow-num" style="background:var(--accent-bg);color:var(--accent);">3</div><div><h4>Nearest Engineer Dispatched</h4><p style="font-size:0.85rem;">AI routing finds the closest available engineer and sends them with all the information they need.</p></div><div class="workflow-line"></div></div>
+          <div class="workflow-step reveal reveal-delay-3"><div class="workflow-num" style="background:var(--light-blue);color:var(--primary-blue);">4</div><div><h4>Fix Verified Remotely</h4><p style="font-size:0.85rem;">ZynkaCharge confirms the charger is back online and operating normally.</p></div><div class="workflow-line"></div></div>
+          <div class="workflow-step reveal reveal-delay-4"><div class="workflow-num" style="background:var(--accent-bg);color:var(--accent);">5</div><div><h4>Charger Back Online</h4><p style="font-size:0.85rem;">Billing resumes automatically. The driver never even noticed.</p></div></div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="video-placeholder"><div class="play-btn"></div><span class="video-label">Platform Demo Video â Click to Play</span></div>
+      </div>
+    </div>
+    <div class="card reveal" style="text-align:center; padding:24px 32px; background:var(--gradient-accent-light); border-color:rgba(0,200,150,0.15); margin-bottom:48px;">
+      <p style="font-size:1.15rem; color:var(--text-dark); font-weight:500;">
+        Reduce downtime by up to <span style="color:var(--accent); font-weight:700;">40%</span> with predictive maintenance and automated dispatch
+      </p>
+    </div>
+    <div class="reveal" style="overflow-x:auto;">
+      <table class="comparison-table">
+        <thead><tr><th>Feature</th><th>Typical Platforms</th><th class="zynka-col">Zynka Integrated</th></tr></thead>
+        <tbody>
+          <tr><td>CPMS</td><td><span class="check">&#10003;</span></td><td class="zynka-col"><span class="check">&#10003;</span></td></tr>
+          <tr><td>Field Service Management</td><td><span class="cross">&#10007;</span> <span style="color:var(--text-muted); font-size:0.8rem;">(third party)</span></td><td class="zynka-col"><span class="check">&#10003;</span> Native</td></tr>
+          <tr><td>Predictive Maintenance</td><td><span class="cross">&#10007;</span></td><td class="zynka-col"><span class="check">&#10003;</span> AI Powered</td></tr>
+          <tr><td>Single Installer + CPO Platform</td><td><span class="cross">&#10007;</span></td><td class="zynka-col"><span class="check">&#10003;</span></td></tr>
+          <tr><td>Preventative Scheduling</td><td><span class="cross">&#10007;</span></td><td class="zynka-col"><span class="check">&#10003;</span></td></tr>
+          <tr><td>Energy Optimisation</td><td>Basic load management</td><td class="zynka-col"><span class="check">&#10003;</span> Dynamic + AI</td></tr>
+          <tr><td>Flexibility Markets</td><td><span class="cross">&#10007;</span></td><td class="zynka-col"><span style="color:var(--primary-purple);">Roadmap</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== REVENUE & UPTIME ==================== -->
+<section id="sec-stats" style="background:var(--bg-light); overflow:hidden;">
+  <div class="grid-pattern"></div>
+  <div class="particle" style="width:6px; height:6px; background:rgba(0,200,150,0.2); top:18%; left:7%; --dur:22s; --delay:0s;"></div>
+  <div class="particle" style="width:4px; height:4px; background:rgba(124,58,237,0.2); top:70%; right:5%; --dur:18s; --delay:2s;"></div>
+  <div class="particle" style="width:9px; height:9px; background:rgba(33,150,243,0.1); bottom:10%; left:50%; --dur:25s; --delay:5s;"></div>
+  <div class="section-inner" style="position:relative;z-index:1;">
+    <div style="text-align:center; margin-bottom:60px;">
+      <div class="badge badge-accent reveal" style="margin-bottom:16px;">Results</div>
+      <h2 class="reveal reveal-delay-1">More Uptime. More Sessions.<br>More Revenue.</h2>
+    </div>
+    <div class="grid-3 reveal" id="statsGrid">
+      <div class="stat-box stat-glow">
+        <div class="progress-ring-container">
+          <svg class="progress-ring" width="160" height="160" viewBox="0 0 160 160">
+            <circle class="progress-ring-bg" cx="80" cy="80" r="70"/>
+            <circle class="progress-ring-fill" id="uptimeRing" cx="80" cy="80" r="70"/>
+          </svg>
+          <div class="progress-ring-text">
+            <span class="progress-ring-value" id="uptimeValue">0%</span>
+            <span class="progress-ring-label">Uptime</span>
+          </div>
+        </div>
+        <h4>98.7% Target Uptime</h4>
+        <p style="font-size:0.9rem; margin-top:8px;">Preventative maintenance and predictive alerts keep your network running.</p>
+      </div>
+      <div class="stat-box">
+        <div style="margin-bottom:20px;">
+          <svg width="80" height="80" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" viewBox="0 0 80 80"><circle cx="40" cy="40" r="35" stroke="var(--border-light)"/><path d="M28 42l8 8 16-16" stroke-width="3"/></svg>
+        </div>
+        <div class="stat-value" style="color:var(--accent);" id="calloutStat">0%</div>
+        <h4>Fewer Unplanned Callouts</h4>
+        <p style="font-size:0.9rem; margin-top:8px;">Automated dispatch and preventative scheduling mean fewer emergency trips.</p>
+      </div>
+      <div class="stat-box">
+        <div style="margin-bottom:20px;">
+          <svg width="80" height="80" fill="none" stroke="var(--primary-blue)" stroke-width="1.5" stroke-linecap="round" viewBox="0 0 80 80">
+            <rect x="10" y="20" width="12" height="40" rx="3" fill="rgba(33,150,243,0.08)"/>
+            <rect x="26" y="30" width="12" height="30" rx="3" fill="rgba(33,150,243,0.12)"/>
+            <rect x="42" y="15" width="12" height="45" rx="3" fill="rgba(33,150,243,0.16)"/>
+            <rect x="58" y="8" width="12" height="52" rx="3" fill="rgba(33,150,243,0.22)"/>
+            <path d="M16 18l16 10 16-15 16-5" stroke="var(--accent)" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="stat-value" style="color:var(--primary-blue);" id="revenueStat">0%</div>
+        <h4>Revenue Uplift Per Charger</h4>
+        <p style="font-size:0.9rem; margin-top:8px;">Higher uptime means more sessions. More sessions mean more revenue. It is that simple.</p>
+      </div>
+    </div>
+    <div class="card reveal" style="max-width:800px; margin:48px auto 0; padding:28px 36px; text-align:center; background:var(--bg-white);">
+      <p style="color:var(--text-secondary); font-size:1rem; line-height:1.8;">
+        When your CPMS talks to your maintenance team and your maintenance team uses the same platform as your installers, everything gets faster. Preventative maintenance catches issues before they become faults. Predictive analytics spots patterns that humans miss. And when something does go wrong, the right engineer is already on their way.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== TESTIMONIALS ==================== -->
+<section id="sec-testimonials" style="background:var(--bg-white); overflow:hidden;">
+  <div class="hero-bg"></div>
+  <div class="particle" style="width:5px; height:5px; background:rgba(33,150,243,0.2); top:15%; right:12%; --dur:20s; --delay:1s;"></div>
+  <div class="particle" style="width:7px; height:7px; background:rgba(124,58,237,0.12); bottom:20%; left:8%; --dur:24s; --delay:3s;"></div>
+  <div class="section-inner" style="text-align:center; position:relative; z-index:1;">
+    <span class="badge reveal" style="margin-bottom:16px;">WHAT OUR PARTNERS SAY</span>
+    <h2 class="reveal reveal-delay-1" style="margin-bottom:48px;">Built for Operators, by Operators</h2>
+    <div class="grid-3 reveal reveal-delay-2" style="text-align:left;">
+      <div class="card" style="display:flex; flex-direction:column; justify-content:space-between;">
+        <div>
+          <div style="font-size:3rem; line-height:1; color:var(--primary-blue); opacity:0.3; font-family:Georgia,serif;">&ldquo;</div>
+          <p style="font-size:1rem; color:var(--text-dark); line-height:1.7; margin:8px 0 24px;">Having our CPMS and field service management in one platform has completely changed how we operate. We can see a fault, raise a ticket and dispatch an engineer without leaving the dashboard. It is one ecosystem for both the physical and digital side of maintenance.</p>
+        </div>
+        <div style="border-top:1px solid var(--border-light); padding-top:16px; margin-top:auto;">
+          <p style="font-weight:600; color:var(--text-dark); font-size:0.95rem;">Operations Director</p>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <img src="safer-charging-logo.png" alt="Safer Charging" style="height:18px; width:auto;">
+          </div>
+        </div>
+      </div>
+      <div class="card" style="display:flex; flex-direction:column; justify-content:space-between;">
+        <div>
+          <div style="font-size:3rem; line-height:1; color:var(--primary-blue); opacity:0.3; font-family:Georgia,serif;">&ldquo;</div>
+          <p style="font-size:1rem; color:var(--text-dark); line-height:1.7; margin:8px 0 24px;">The white label capability meant we could launch our own branded charging app in weeks, not months. The integration with ZynkaOne means our sales and support teams work from the same system as our engineers in the field.</p>
+        </div>
+        <div style="border-top:1px solid var(--border-light); padding-top:16px; margin-top:auto;">
+          <p style="font-weight:600; color:var(--text-dark); font-size:0.95rem;">Managing Director</p>
+          <p style="font-size:0.85rem; color:var(--text-muted);">UK Charge Point Operator</p>
+        </div>
+      </div>
+      <div class="card" style="display:flex; flex-direction:column; justify-content:space-between;">
+        <div>
+          <div style="font-size:3rem; line-height:1; color:var(--primary-blue); opacity:0.3; font-family:Georgia,serif;">&ldquo;</div>
+          <p style="font-size:1rem; color:var(--text-dark); line-height:1.7; margin:8px 0 24px;">We looked at several CPMS providers but Zynka was the only one that also solved our field service problem. Our engineers, our installers and our operations team all in one place. That was the difference.</p>
+        </div>
+        <div style="border-top:1px solid var(--border-light); padding-top:16px; margin-top:auto;">
+          <p style="font-weight:600; color:var(--text-dark); font-size:0.95rem;">Head of Fleet Operations</p>
+          <p style="font-size:0.85rem; color:var(--text-muted);">National Fleet Operator</p>
+        </div>
+      </div>
+    </div>
+    <p class="reveal reveal-delay-3" style="margin-top:32px; font-size:0.85rem; color:var(--text-muted); font-style:italic;">Testimonial names withheld for commercial confidentiality. Real feedback from Zynka platform users.</p>
+  </div>
+</section>
+
+<!-- ==================== ENERGY INTELLIGENCE ==================== -->
+<section id="sec-energy" style="background:var(--bg-section); overflow:hidden;">
+  <div class="grid-pattern"></div>
+  <div class="particle" style="width:8px; height:8px; background:rgba(124,58,237,0.12); top:10%; right:6%; --dur:22s; --delay:0s;"></div>
+  <div class="particle" style="width:5px; height:5px; background:rgba(0,200,150,0.18); bottom:15%; left:10%; --dur:19s; --delay:2s;"></div>
+  <div class="section-inner" style="position:relative;z-index:1;">
+    <div style="text-align:center; margin-bottom:48px;">
+      <div class="badge reveal" style="margin-bottom:16px; background:var(--light-purple); color:var(--primary-purple); border-color:rgba(124,58,237,0.15);">The Vision</div>
+      <h2 class="reveal reveal-delay-1">Beyond Charging Management.<br><span class="gradient-text">Towards Energy Intelligence.</span></h2>
+      <div class="reveal reveal-delay-2" style="margin-top:28px;">
+        <div class="photo-panel" style="max-width:820px; margin:0 auto; height:220px;">
+          <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1200&q=85&auto=format" alt="Wind turbines and solar panels powering a sustainable energy grid" loading="lazy">
+          <div class="overlay-gradient"></div>
+          <div style="position:absolute; bottom:18px; left:24px; color:#fff; z-index:1;">
+            <p style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; opacity:0.8;">EV, solar, wind and battery storage managed as one energy ecosystem</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="energy-grid reveal">
+      <div class="energy-node"><div class="energy-node-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"><circle cx="16" cy="16" r="6"/><path d="M16 2v4M16 26v4M2 16h4M26 16h4M5.6 5.6l2.8 2.8M23.6 23.6l2.8 2.8M5.6 26.4l2.8-2.8M23.6 8.4l2.8-2.8"/></svg></div>Solar PV</div>
+      <div class="energy-arrow"><svg width="28" height="16" viewBox="0 0 28 16" fill="none" stroke="var(--text-muted)" stroke-width="2" stroke-linecap="round"><path d="M2 8h22M20 3l5 5-5 5"/></svg></div>
+      <div class="energy-node" style="border-color:rgba(33,150,243,0.3);"><div class="energy-node-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round"><rect x="8" y="4" width="16" height="24" rx="3"/><path d="M12 4v-2M20 4v-2M14 14l4-4v6l-4 4v-6z" fill="rgba(33,150,243,0.15)"/></svg></div>Battery Storage</div>
+      <div class="energy-arrow"><svg width="28" height="16" viewBox="0 0 28 16" fill="none" stroke="var(--text-muted)" stroke-width="2" stroke-linecap="round"><path d="M2 8h22M20 3l5 5-5 5"/></svg></div>
+      <div class="energy-node" style="border-color:rgba(0,200,150,0.3);"><div class="energy-node-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#00C896" stroke-width="2" stroke-linecap="round"><path d="M16 4v6M8 28h16M12 28V18h8v10M6 18h20"/><circle cx="16" cy="10" r="3" fill="rgba(0,200,150,0.15)"/></svg></div>EV Chargers</div>
+      <div class="energy-arrow"><svg width="28" height="16" viewBox="0 0 28 16" fill="none" stroke="var(--text-muted)" stroke-width="2" stroke-linecap="round"><path d="M2 8h22M20 3l5 5-5 5"/></svg></div>
+      <div class="energy-node" style="border-color:rgba(124,58,237,0.3);"><div class="energy-node-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round"><path d="M4 28h24M8 28V14l4-6h8l4 6v14M14 18h4M14 22h4"/><path d="M18 8l-2-6-2 6" stroke-width="1.5"/></svg></div>Grid</div>
+    </div>
+    <div class="grid-2" style="grid-template-columns:repeat(2,1fr); gap:24px; margin-top:48px;">
+      <div class="card reveal">
+        <div class="card-icon" style="background:var(--accent-bg);"><svg width="24" height="24" fill="none" stroke="#00C896" stroke-width="2" stroke-linecap="round"><path d="M4 14h5l3-8 4 16 3-8h5"/></svg></div>
+        <h4>Dynamic Load Balancing</h4>
+        <p style="font-size:0.9rem; margin-top:8px;">Distribute power intelligently across chargers, solar PV and battery storage. No wasted capacity, no tripped breakers.</p>
+      </div>
+      <div class="card reveal reveal-delay-1">
+        <div class="card-icon"><svg width="24" height="24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg></div>
+        <h4>AI Energy Optimisation</h4>
+        <p style="font-size:0.9rem; margin-top:8px;">Smartly manage on site energy consumption whether for your own use or distributed to the wider grid.</p>
+      </div>
+      <div class="card reveal reveal-delay-2">
+        <div class="card-icon" style="background:var(--light-purple);"><svg width="24" height="24" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round"><path d="M12 2v4M2 12h4M18 12h4M12 18v4M6 6l2 2M16 6l-2 2"/></svg></div>
+        <h4>Flexibility Market Participation</h4>
+        <p style="font-size:0.9rem; margin-top:8px;">When rewards and incentives are strong enough, participate in grid flexibility markets for additional revenue streams.</p>
+      </div>
+      <div class="card reveal reveal-delay-3">
+        <div class="card-icon" style="background:var(--accent-bg);"><svg width="24" height="24" fill="none" stroke="#00C896" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8M12 8v8"/></svg></div>
+        <h4>On Site Energy Management</h4>
+        <p style="font-size:0.9rem; margin-top:8px;">A single platform to understand, optimise and control your entire energy ecosystem from one place.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PRICING ==================== -->
+<section id="sec-pricing" style="min-height:80vh; background:var(--bg-white); overflow:hidden;">
+  <div class="grid-pattern"></div>
+  <div class="particle" style="width:5px; height:5px; background:rgba(0,200,150,0.18); top:10%; right:12%; --dur:21s; --delay:2s;"></div>
+  <div class="particle" style="width:6px; height:6px; background:rgba(33,150,243,0.15); bottom:20%; left:8%; --dur:19s; --delay:0s;"></div>
+  <div class="section-inner" style="text-align:center; position:relative; z-index:1;">
+    <span class="badge badge-accent reveal" style="margin-bottom:16px;">COMMERCIAL MODEL</span>
+    <h2 class="reveal reveal-delay-1" style="margin-bottom:16px;">No Monthly Fees for Early Adopters</h2>
+    <p class="reveal reveal-delay-2" style="max-width:640px; margin:0 auto 48px; font-size:1.1rem;">
+      Start with zero monthly costs. Grow your network without heavy overheads. Zynka offers a simple licensing model that scales with your business, not against it.
+    </p>
+    <div class="grid-3 reveal reveal-delay-3">
+      <div class="card" style="text-align:center;">
+        <div class="card-icon" style="margin:0 auto 16px; background:var(--accent-bg);"><svg width="24" height="24" fill="none" stroke="#00C896" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+        <h4>ZynkaCharge</h4>
+        <p style="font-size:2rem; font-weight:800; color:var(--accent); margin:12px 0 4px;">No Monthly Fee</p>
+        <p style="font-size:0.9rem;">One time licence. No per charger monthly costs eating into your margins.</p>
+      </div>
+      <div class="card" style="text-align:center; border-color:var(--primary-blue);">
+        <div style="position:absolute; top:0; left:0; right:0; height:3px; background:var(--gradient-brand);"></div>
+        <div class="card-icon" style="margin:0 auto 16px;"><svg width="24" height="24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="18" rx="3"/><path d="M8 7h8M8 11h5"/></svg></div>
+        <h4>Full Ecosystem</h4>
+        <p style="font-size:2rem; font-weight:800; color:var(--primary-blue); margin:12px 0 4px;">Bundled</p>
+        <p style="font-size:0.9rem;">ZynkaCharge + ZynkaOne + ZynkaOps in a single integrated licence. The best value for CPOs who want everything.</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div class="card-icon" style="margin:0 auto 16px; background:var(--light-purple);"><svg width="24" height="24" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h4>White Label</h4>
+        <p style="font-size:2rem; font-weight:800; color:var(--primary-purple); margin:12px 0 4px;">Your Brand</p>
+        <p style="font-size:0.9rem;">Full customisation included. Your brand, your app, your domain. No extra charge for white labelling.</p>
+      </div>
+    </div>
+    <p class="reveal reveal-delay-4" style="margin-top:40px; font-size:0.95rem; color:var(--text-secondary);">
+      Compare that to conventional platforms charging &pound;5 to &pound;8 per socket per month plus transaction fees. At scale, those costs add up fast.
+    </p>
+  </div>
+</section>
+
+<!-- ==================== ABOUT ZYNKA ==================== -->
+<section id="sec-about" style="min-height:70vh; background:var(--bg-light); overflow:hidden;">
+  <div class="grid-pattern"></div>
+  <div class="particle" style="width:6px; height:6px; background:rgba(33,150,243,0.18); top:12%; left:3%; --dur:21s; --delay:1s;"></div>
+  <div class="particle" style="width:4px; height:4px; background:rgba(0,200,150,0.15); bottom:18%; right:7%; --dur:17s; --delay:4s;"></div>
+  <div class="section-inner" style="position:relative; z-index:1;">
+    <div class="reveal" style="margin-bottom:40px;">
+      <div class="photo-panel" style="max-width:100%; height:240px;">
+        <img src="https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=1200&q=85&auto=format" alt="EV charging infrastructure alongside solar panels and battery storage" loading="lazy">
+        <div class="overlay-gradient"></div>
+        <div style="position:absolute; bottom:20px; left:28px; color:#fff; z-index:1;">
+          <p style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; opacity:0.8;">Powering the transition to intelligent energy management</p>
+        </div>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div>
+        <span class="badge reveal" style="margin-bottom:16px;">ABOUT ZYNKA</span>
+        <h2 class="reveal reveal-delay-1" style="margin-bottom:20px;">Built in the UK. <br>Trusted Worldwide.</h2>
+        <p class="reveal reveal-delay-2" style="font-size:1.05rem; margin-bottom:16px; color:var(--text-dark);">
+          Zynka Technologies is a UK registered company building intelligent software for the EV charging industry and beyond.
+        </p>
+        <p class="reveal reveal-delay-2" style="margin-bottom:16px;">
+          We did not start by building a dashboard and calling it a platform. We started by working directly with charge point operators, installers, fleet managers and facilities teams to understand what actually breaks in the real world, and then we built the software to fix it.
+        </p>
+        <p class="reveal reveal-delay-3" style="margin-bottom:16px;">
+          The result is an integrated ecosystem where your CPMS, your field service management and your business operations all live in one place. No bolted on integrations. No data silos. No paying three vendors for what should be one job.
+        </p>
+        <p class="reveal reveal-delay-3" style="margin-bottom:24px;">
+          Our platform is already trusted by CPOs, installation companies and fleet operators across the UK and internationally.
+        </p>
+        <div class="reveal reveal-delay-4" style="display:flex; gap:32px; flex-wrap:wrap;">
+          <div><p style="font-size:1.8rem; font-weight:800; color:var(--primary-blue);">UK</p><p style="font-size:0.85rem;">Headquartered</p></div>
+          <div><p style="font-size:1.8rem; font-weight:800; color:var(--accent);">OCPP/OCPI</p><p style="font-size:0.85rem;">Standards Compliant</p></div>
+          <div><p style="font-size:1.8rem; font-weight:800; color:var(--primary-purple);">AI</p><p style="font-size:0.85rem;">Enabled Platform</p></div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="card" style="background:var(--gradient-brand-light); border-color:rgba(33,150,243,0.15);">
+          <h4 style="margin-bottom:16px; color:var(--primary-blue);">Why Work With Zynka?</h4>
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <div style="display:flex; gap:12px; align-items:flex-start;"><svg width="20" height="20" fill="none" stroke="var(--accent)" stroke-width="2" style="flex-shrink:0; margin-top:2px;"><path d="M20 6L9 17l-5-5"/></svg><p style="font-size:0.95rem; color:var(--text-dark);">One platform, not three separate tools stitched together</p></div>
+            <div style="display:flex; gap:12px; align-items:flex-start;"><svg width="20" height="20" fill="none" stroke="var(--accent)" stroke-width="2" style="flex-shrink:0; margin-top:2px;"><path d="M20 6L9 17l-5-5"/></svg><p style="font-size:0.95rem; color:var(--text-dark);">No monthly per charger fees draining your margins</p></div>
+            <div style="display:flex; gap:12px; align-items:flex-start;"><svg width="20" height="20" fill="none" stroke="var(--accent)" stroke-width="2" style="flex-shrink:0; margin-top:2px;"><path d="M20 6L9 17l-5-5"/></svg><p style="font-size:0.95rem; color:var(--text-dark);">White label at no extra cost, your brand on everything</p></div>
+            <div style="display:flex; gap:12px; align-items:flex-start;"><svg width="20" height="20" fill="none" stroke="var(--accent)" stroke-width="2" style="flex-shrink:0; margin-top:2px;"><path d="M20 6L9 17l-5-5"/></svg><p style="font-size:0.95rem; color:var(--text-dark);">UK based team with direct access to engineering support</p></div>
+            <div style="display:flex; gap:12px; align-items:flex-start;"><svg width="20" height="20" fill="none" stroke="var(--accent)" stroke-width="2" style="flex-shrink:0; margin-top:2px;"><path d="M20 6L9 17l-5-5"/></svg><p style="font-size:0.95rem; color:var(--text-dark);">Preventative maintenance and AI optimisation built in, not bolted on</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CTA / CONTACT ==================== -->
+<section id="sec-contact" style="background:var(--bg-white); overflow:hidden;">
+  <div class="hero-bg"></div>
+  <div class="grid-pattern"></div>
+  <div class="particle" style="width:6px; height:6px; background:rgba(33,150,243,0.12); top:20%; left:8%; --dur:22s; --delay:0s;"></div>
+  <div class="section-inner" style="position:relative;z-index:1; text-align:center;">
+    <div class="reveal">
+      <img src="zynka-logo.jpg" alt="Zynka" style="height:48px; width:auto; margin-bottom:32px;">
+    </div>
+    <h2 class="reveal reveal-delay-1" style="margin-bottom:16px;">Ready to See It in Action?</h2>
+    <p class="reveal reveal-delay-2" style="font-size:1.15rem; max-width:560px; margin:0 auto 40px;">
+      Book a personalised demo and see how Zynka can transform your charging operation.
+    </p>
+    <div class="reveal reveal-delay-3" style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:48px;">
+      <a href="mailto:michael@zynka.ai?subject=Demo%20Request%20-%20Zynka%20Platform" class="btn btn-accent" style="font-size:1.05rem; padding:16px 40px;">
+        Book a Demo
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+      <a href="https://www.zynka.ai" target="_blank" rel="noopener" class="btn btn-secondary" style="font-size:1.05rem; padding:16px 40px;">
+        Visit zynka.ai
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10L10 4M6 4h4v4"/></svg>
+      </a>
+    </div>
+    <div class="reveal reveal-delay-4" style="display:flex; gap:32px; justify-content:center; flex-wrap:wrap; margin-bottom:8px;">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <svg width="18" height="18" fill="none" stroke="var(--primary-blue)" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="14" height="10" rx="2"/><path d="M2 6l7 4 7-4"/></svg>
+        <a href="mailto:hello@zynka.ai" style="color:var(--text-secondary); text-decoration:none; font-size:0.95rem;">hello@zynka.ai</a>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <svg width="18" height="18" fill="none" stroke="var(--primary-blue)" stroke-width="2" stroke-linecap="round"><path d="M3 4h12a2 2 0 012 2v8a2 2 0 01-2 2H5l-3 2V6a2 2 0 012-2z"/></svg>
+        <span style="color:var(--text-secondary); font-size:0.95rem;">+44 7586 617533</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <svg width="18" height="18" fill="none" stroke="var(--primary-blue)" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="9" r="7"/><path d="M2 9h14M9 2a11 11 0 014 7 11 11 0 01-4 7 11 11 0 01-4-7 11 11 0 014-7z"/></svg>
+        <a href="https://www.zynka.ai" target="_blank" rel="noopener" style="color:var(--text-secondary); text-decoration:none; font-size:0.95rem;">www.zynka.ai</a>
+      </div>
+    </div>
+    <div class="reveal reveal-delay-4 img-showcase" style="margin-top:48px;">
+      <div class="photo-panel" style="height:200px;">
+        <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?w=800&q=85&auto=format" alt="Electric vehicle charging" loading="lazy">
+        <div class="overlay-gradient"></div>
+      </div>
+      <div class="photo-panel" style="height:200px;">
+        <img src="https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?w=800&q=85&auto=format" alt="Wind farm and renewable energy landscape" loading="lazy">
+        <div class="overlay-gradient"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>ZYNKA Technologies Limited &nbsp;|&nbsp; Intelligent Solutions for a Sustainable World</p>
+  <p style="margin-top:8px; font-size:0.75rem;">&copy; 2026 Zynka Technologies. All rights reserved.</p>
+</footer>
+
+<script>
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold:0.1, rootMargin:'0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+const sections = document.querySelectorAll('section');
+const dots = document.querySelectorAll('.nav-dot');
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const idx = Array.from(sections).indexOf(entry.target);
+      dots.forEach((d,i) => d.classList.toggle('active', i === idx));
+    }
+  });
+}, { threshold:0.4 });
+sections.forEach(s => sectionObserver.observe(s));
+dots.forEach(dot => {
+  dot.addEventListener('click', () => {
+    const idx = parseInt(dot.dataset.section);
+    sections[idx].scrollIntoView({ behavior:'smooth' });
+  });
+});
+
+let statsAnimated = false;
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting && !statsAnimated) { statsAnimated = true; animateStats(); } });
+}, { threshold:0.3 });
+const statsGrid = document.getElementById('statsGrid');
+if (statsGrid) statsObserver.observe(statsGrid);
+
+function animateStats() {
+  const ring = document.getElementById('uptimeRing');
+  const c = 2 * Math.PI * 70;
+  ring.style.strokeDasharray = c;
+  ring.style.strokeDashoffset = c;
+  setTimeout(() => { ring.style.strokeDashoffset = c * (1 - 0.987); }, 200);
+  animateCounter('uptimeValue', 0, 98.7, 2000, '%', 1);
+  animateCounter('calloutStat', 0, 40, 2000, '%', 0);
+  animateCounter('revenueStat', 0, 23, 2000, '%', 0);
+}
+
+function animateCounter(id, start, end, duration, suffix, decimals) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const startTime = performance.now();
+  function update(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = start + (end - start) * eased;
+    el.textContent = current.toFixed(decimals) + suffix;
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior:'smooth' });
+  });
+});
+</script>
+</body>
+</html>
