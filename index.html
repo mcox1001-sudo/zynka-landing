@@ -643,10 +643,10 @@ const trustedLogos = [
 (function buildTrustedLogos() {
   const container = document.getElementById('trusted-logos');
   trustedLogos.forEach(function(item) {
-    const cardStyle = 'padding:16px 28px; border:1px solid var(--border-card); border-radius:12px; background:var(--bg-white); box-shadow:var(--card-shadow); transition:all 0.3s; display:flex; align-items:center;';
+    const cardStyle = 'padding:16px 28px; border:1px solid var(--border-card); border-radius:12px; background:var(--bg-white); box-shadow:var(--card-shadow); transition:all 0.3s; display:flex; align-items:center; justify-content:center; min-width:140px;';
     let inner = '';
     if (item.logo) {
-      inner = '<img src="' + item.logo + '" alt="' + item.name + '" style="height:36px; width:auto;">';
+      inner = '<img src="' + item.logo + '" alt="' + item.name + '" style="height:36px; width:auto; max-width:120px; object-fit:contain;">';
     } else {
       const colour = item.name === 'KEBA' ? '#00843D' : 'var(--text-dark)';
       const weight = item.name === 'KEBA' ? '700' : '600';
